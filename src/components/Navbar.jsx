@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           180DSA
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,14 +25,14 @@ export default function Navbar() {
             style={{ "--bs-scroll-height": "100px" }}
           >
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <Link className="nav-link" to="/about">
                 About Us
-              </a>
+              </Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
