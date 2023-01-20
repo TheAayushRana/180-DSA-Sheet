@@ -1,22 +1,37 @@
 import React from "react";
 import Questions from "../Data/Questions.json";
+import { Link } from "react-router-dom";
+import "./Topics.css";
 
-export default function List() {
-  //   console.log(Questions);
-  //   console.log(Object.keys(Questions));
-  const array = Object.keys(Questions);
-
+export default function Topics() {
+  const lists = Object.keys(Questions);
   return (
     <div>
-      <div className="d-flex flex-wrap justify-content-around px-5">
-        {array.map((item) => (
+      <p className="text-center fs-4 fw-semibold">
+        Your Gateway to crack DSA 🔥
+      </p>
+      <p className="text-center fs-4 fw-semibold">Start Solving</p>
+      <div className="d-flex flex-wrap justify-content-around px-5 py-4">
+        {lists.map((item) => (
           <div
             key={item}
-            className="card d-flex flex-wrap justify-content-center mb-4 p-3"
-            style={{ flex: "0 0 30%", height: "100px" }}
+            className="topic-card card d-flex flex-wrap justify-content-center mb-4 p-3"
           >
-            <h5 className="card-title">{item.toUpperCase() + " "}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">Total Questions:</h6>
+            <Link to={`/${item}`} key={item} className="text-decoration-none">
+              <div className="row">
+                <div className="col">
+                  <p className="card-title fs-5 fw-semibold">
+                    {item.charAt(0).toUpperCase() + item.slice(1) + " "}
+                  </p>
+                  <p className="card-subtitle mb-2 text-muted fw-semibold">
+                    Total Questions: {Questions[item].length}
+                  </p>
+                </div>
+                <div className="col">
+                  <button type="button">Start Now</button>
+                </div>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

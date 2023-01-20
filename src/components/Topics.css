@@ -1,0 +1,15 @@
+.topic-card {
+  flex: 0 0 30%;
+  background-color: #b2f6aa;
+  border-radius: 15px;
+}
+.topic-card a {
+  color: black !important;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 670px) {
+  .topic-card {
+    flex: 0 0 100%;
+  }
+}
