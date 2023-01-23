@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg bg-info text-dark bg-opacity-10">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           180DSA
@@ -39,10 +39,10 @@ export default function Navbar() {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search DSA Sheet..."
+              placeholder="Search Topic Name..."
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
           </form>

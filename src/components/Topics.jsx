@@ -7,7 +7,7 @@ export default function Topics() {
   const lists = Object.keys(Questions);
   return (
     <div>
-      <p className="text-center fs-4 fw-semibold">
+      <p className="top-heading text-center fs-4 fw-semibold">
         Your Gateway to crack DSA 🔥
       </p>
       <p className="text-center fs-4 fw-semibold">Start Solving</p>
@@ -17,8 +17,12 @@ export default function Topics() {
             key={item}
             className="topic-card card d-flex flex-wrap justify-content-center mb-4 p-3"
           >
-            <Link to={`/${item}`} key={item} className="text-decoration-none">
-              <div className="row">
+            <Link
+              to={`/${item}`}
+              key={item}
+              className="text-decoration-none w-100"
+            >
+              <div className="row d-flex align-items-center">
                 <div className="col">
                   <p className="card-title fs-5 fw-semibold">
                     {item.charAt(0).toUpperCase() + item.slice(1) + " "}
@@ -28,7 +32,9 @@ export default function Topics() {
                   </p>
                 </div>
                 <div className="col">
-                  <button type="button">Start Now</button>
+                  <button type="button" className="startnowbtn">
+                    Start Now
+                  </button>
                 </div>
               </div>
             </Link>

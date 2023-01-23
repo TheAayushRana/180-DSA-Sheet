@@ -9,7 +9,7 @@ function App() {
     <>
       <Navbar />
       <div className="App">
-        <h1 className="text-center pt-4">180 DSA Cracker</h1>
+        <h1 className="top-heading text-center pt-4">180 DSA Cracker</h1>
       </div>
       <Routes>
         <Route path="/" element={<Topics />} />

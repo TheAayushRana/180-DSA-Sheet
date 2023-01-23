@@ -1,11 +1,20 @@
 .topic-card {
   flex: 0 0 30%;
-  background-color: #b2f6aa;
+  background-color: #dce7ff;
   border-radius: 15px;
 }
 .topic-card a {
   color: black !important;
   font-weight: 700;
+}
+
+.startnowbtn {
+  background: #47beb9;
+  border: none;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 670px) {
