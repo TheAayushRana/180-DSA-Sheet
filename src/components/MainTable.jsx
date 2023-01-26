@@ -1,5 +1,6 @@
-import { useTable } from "react-table";
+import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { useMemo } from "react";
+import SearchQuestion from "./SearchQuestion";
 
 function MainTable({ content }) {
   console.log(content);
@@ -27,11 +28,21 @@ function MainTable({ content }) {
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    state,
+    setGlobalFilter,
+  } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+
+  const { globalfilter } = state;
 
   return (
     <>
+      <SearchQuestion filter={globalfilter} setFilter={setGlobalFilter} />
       <table
         {...getTableProps()}
         style={{
@@ -39,13 +50,14 @@ function MainTable({ content }) {
           textAlign: "center",
           margin: "auto",
         }}
+        className="table table-bordered mb-5"
       >
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()} className="table-light">
               {headerGroup.headers.map((column) => (
                 <th
-                  {...column.getHeaderProps()}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
                   style={{
                     borderBottom: "solid 3px red",
                     background: "aliceblue",
@@ -54,6 +66,13 @@ function MainTable({ content }) {
                   }}
                 >
                   {column.render("Header")}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? " ▲ "
+                        : " ▼ "
+                      : ""}
+                  </span>
                 </th>
               ))}
             </tr>
@@ -63,7 +82,7 @@ function MainTable({ content }) {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} className="table-light">
                 {row.cells.map((cell) => {
                   return (
                     <td
