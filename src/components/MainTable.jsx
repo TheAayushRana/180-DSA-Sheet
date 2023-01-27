@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import SearchQuestion from "./SearchQuestion";
 
 function MainTable({ content }) {
-  console.log(content);
   const data = useMemo(() => content, []);
 
   const columns = useMemo(
@@ -19,10 +18,12 @@ function MainTable({ content }) {
       {
         Header: "Question Link",
         accessor: "Question_link",
+        Cell: (props) => <a href={props.value}> Practice Link</a>,
       },
       {
         Header: "Solution Link",
         accessor: "Solution_link",
+        Cell: (props) => <a href={props.value}> Solution</a>,
       },
     ],
     []
@@ -49,8 +50,9 @@ function MainTable({ content }) {
           border: "solid 1px blue",
           textAlign: "center",
           margin: "auto",
+          fontWeight: "bold",
         }}
-        className="table table-bordered mb-5"
+        className="table table-bordered mb-5 w-75"
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -59,10 +61,9 @@ function MainTable({ content }) {
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   style={{
-                    borderBottom: "solid 3px red",
-                    background: "aliceblue",
+                    border: "solid 3px #47beb9",
+                    background: "#dce7ff",
                     color: "black",
-                    fontWeight: "bold",
                   }}
                 >
                   {column.render("Header")}
@@ -89,8 +90,8 @@ function MainTable({ content }) {
                       {...cell.getCellProps()}
                       style={{
                         padding: "10px",
-                        border: "solid 1px gray",
-                        background: "papayawhip",
+                        border: "solid 1px black",
+                        background: "aliceblue",
                       }}
                     >
                       {cell.render("Cell")}

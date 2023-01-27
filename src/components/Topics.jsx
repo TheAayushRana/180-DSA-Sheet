@@ -7,10 +7,10 @@ export default function Topics() {
   const lists = Object.keys(Questions);
   return (
     <div>
-      <p className="top-heading text-center fs-4 fw-semibold">
+      <h3 className="top-heading text-center fs-4 fw-semibold">
         Your Gateway to crack DSA 🔥
-      </p>
-      <p className="text-center fs-4 fw-semibold">Start Solving</p>
+      </h3>
+      <h3 className="text-center fs-4 fw-semibold">Start Solving</h3>
       <div className="d-flex flex-wrap justify-content-around px-5 py-4">
         {lists.map((item) => (
           <div

@@ -9,7 +9,9 @@ function App() {
     <>
       <Navbar />
       <div className="App">
-        <h1 className="top-heading text-center pt-4">180 DSA Cracker</h1>
+        <h1 className="pt-4 top-heading text-center fs-1 fw-semibold">
+          180 DSA Cracker Striver SDE Sheet
+        </h1>
       </div>
       <Routes>
         <Route path="/" element={<Topics />} />

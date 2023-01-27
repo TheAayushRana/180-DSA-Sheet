@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-info text-dark bg-opacity-10">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand fw-bold fs-4" to="/">
           180DSA
         </Link>
         <button
@@ -24,7 +24,7 @@ export default function Navbar() {
             className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
             style={{ "--bs-scroll-height": "100px" }}
           >
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
@@ -33,7 +33,7 @@ export default function Navbar() {
               <Link className="nav-link" to="/about">
                 About Us
               </Link>
-            </li>
+            </li> */}
           </ul>
           <form className="d-flex" role="search">
             <input
