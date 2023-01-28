@@ -1,6 +1,12 @@
-import { useTable, useSortBy, useGlobalFilter } from "react-table";
+import {
+  useTable,
+  useSortBy,
+  useGlobalFilter,
+  useRowSelect,
+} from "react-table";
 import { useMemo } from "react";
 import SearchQuestion from "./SearchQuestion";
+import Checkbox from "./Checkbox";
 
 function MainTable({ content }) {
   const data = useMemo(() => content, []);
@@ -18,12 +24,20 @@ function MainTable({ content }) {
       {
         Header: "Question Link",
         accessor: "Question_link",
-        Cell: (props) => <a href={props.value}> Practice Link</a>,
+        Cell: (props) => (
+          <a href={props.value} target="_blank">
+            Practice Link
+          </a>
+        ),
       },
       {
         Header: "Solution Link",
         accessor: "Solution_link",
-        Cell: (props) => <a href={props.value}> Solution</a>,
+        Cell: (props) => (
+          <a href={props.value} target="_blank">
+            Solution
+          </a>
+        ),
       },
     ],
     []
@@ -37,7 +51,25 @@ function MainTable({ content }) {
     prepareRow,
     state,
     setGlobalFilter,
-  } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+    selectedFlatRows,
+  } = useTable(
+    { columns, data },
+    useGlobalFilter,
+    useSortBy,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => [
+        {
+          id: "selection",
+          Header: ({ getToggleAllRowsSelectedProps }) => (
+            <Checkbox {...getToggleAllRowsSelectedProps()} />
+          ),
+          Cell: ({ row }) => <Checkbox {...row.getToggleRowSelectedProps()} />,
+        },
+        ...columns,
+      ]);
+    }
+  );
 
   const { globalfilter } = state;
 
