@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Topic from "./components/Topic";
 import Topics from "./components/Topics";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Topics />} />
         <Route path="/:topicName" element={<Topic />} />
       </Routes>
+      <Footer />
     </>
   );
 }

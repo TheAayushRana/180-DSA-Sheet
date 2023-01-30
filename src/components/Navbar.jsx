@@ -20,7 +20,10 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarScroll">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarScroll"
+        >
           {/* <ul
             className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
             style={{ "--bs-scroll-height": "100px" }}
