@@ -4,12 +4,13 @@ import {
   useGlobalFilter,
   useRowSelect,
 } from "react-table";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SearchQuestion from "./SearchQuestion";
 import Checkbox from "./Checkbox";
 
 function MainTable({ content }) {
   const data = useMemo(() => content, []);
+  const [solvedQuestion, setSolvedQuestion] = useState([1]);
 
   const columns = useMemo(
     () => [
@@ -72,6 +73,22 @@ function MainTable({ content }) {
   );
 
   const { globalfilter } = state;
+
+  // Used to set in local storage
+  useEffect(() => {
+    const newarray = selectedFlatRows.map((row) => row.original);
+    localStorage.setItem("solved", JSON.stringify(newarray));
+  }, [selectedFlatRows]);
+
+  // Used to get from the local storage
+  useEffect(() => {
+    const arrayData = localStorage.getItem("solved");
+    console.log(arrayData);
+    if (arrayData !== null) {
+      console.log("hi");
+      setSolvedQuestion(JSON.parse(arrayData));
+    }
+  }, []);
 
   return (
     <>
