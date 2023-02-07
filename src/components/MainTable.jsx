@@ -4,13 +4,15 @@ import {
   useGlobalFilter,
   useRowSelect,
 } from "react-table";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import SearchQuestion from "./SearchQuestion";
 import Checkbox from "./Checkbox";
+import ManageContext from "./Context/ManageContext";
 
 function MainTable({ content }) {
+  const { darkMode } = useContext(ManageContext);
   const data = useMemo(() => content, []);
-  const [solvedQuestion, setSolvedQuestion] = useState([1]);
+  const [solvedQuestion, setSolvedQuestion] = useState([]);
 
   const columns = useMemo(
     () => [
@@ -76,9 +78,13 @@ function MainTable({ content }) {
 
   // Used to set in local storage
   useEffect(() => {
-    const newarray = selectedFlatRows.map((row) => row.original);
-    localStorage.setItem("solved", JSON.stringify(newarray));
+    const newarray =
+      selectedFlatRows.map((row) => row.original).length > 0
+        ? selectedFlatRows.map((row) => row.original)
+        : solvedQuestion;
+    setSolvedQuestion([...newarray]);
   }, [selectedFlatRows]);
+  localStorage.setItem("solved", JSON.stringify(solvedQuestion));
 
   // Used to get from the local storage
   useEffect(() => {
@@ -110,9 +116,10 @@ function MainTable({ content }) {
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   style={{
+                    fontSize: "20px",
                     border: "solid 3px #47beb9",
-                    background: "#dce7ff",
-                    color: "black",
+                    color: `${darkMode ? "white" : "black"}`,
+                    background: `${darkMode ? "black" : "#dce7ff"}`,
                   }}
                 >
                   {column.render("Header")}
@@ -138,9 +145,13 @@ function MainTable({ content }) {
                     <td
                       {...cell.getCellProps()}
                       style={{
+                        fontWeight: "500",
                         padding: "10px",
-                        border: "solid 1px black",
-                        background: "aliceblue",
+                        border: `${
+                          darkMode ? "solid 1px white" : "solid 1px black"
+                        }`,
+                        color: `${darkMode ? "white" : "black"}`,
+                        background: `${darkMode ? "black" : "aliceblue"}`,
                       }}
                     >
                       {cell.render("Cell")}

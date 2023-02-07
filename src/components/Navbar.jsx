@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import ManageContext from "./Context/ManageContext";
 import SearchTopic from "./SearchTopic";
 
 export default function Navbar() {
+  const { darkMode, setDarkMode } = useContext(ManageContext);
+
   return (
-    <nav className="navbar navbar-expand-lg bg-info text-dark bg-opacity-10">
+    <nav
+      className={`navbar navbar-expand-lg  ${
+        darkMode ? "bg-dark bg-opacity-50" : "bg-info bg-opacity-10"
+      }`}
+    >
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold fs-4" to="/">
+        <Link
+          className={`navbar-brand fw-bold fs-4 ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+          to="/"
+        >
           180DSA
         </Link>
         <button
@@ -40,6 +52,16 @@ export default function Navbar() {
             </li> */}
           {/* </ul> */}
           <SearchTopic />
+          <div className="form-check form-switch ms-4">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckDefault"
+              checked={darkMode}
+              onChange={() => setDarkMode((prevState) => !prevState)}
+            />
+          </div>
         </div>
       </div>
     </nav>

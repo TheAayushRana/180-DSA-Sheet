@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import Questions from "../Data/Questions.json";
 import { Link } from "react-router-dom";
 import "./Topics.css";
+import ManageContext from "./Context/ManageContext";
 
 export default function Topics() {
+  const { darkMode } = useContext(ManageContext);
+
   const lists = Object.keys(Questions);
   return (
     <div>
-      <h3 className="top-heading text-center fs-4 fw-semibold">
+      <h3
+        className={`top-heading text-center fs-4 fw-semibold ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
         Your Gateway to crack DSA 🔥
       </h3>
-      <h3 className="text-center fs-4 fw-semibold">Start Solving</h3>
+      <h3
+        className={`text-center fs-4 fw-semibold ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
+        Start Solving
+      </h3>
       <div className="d-flex flex-wrap justify-content-around px-5 py-4">
         {lists.map((item) => (
           <div
