@@ -89,9 +89,7 @@ function MainTable({ content }) {
   // Used to get from the local storage
   useEffect(() => {
     const arrayData = localStorage.getItem("solved");
-    console.log(arrayData);
     if (arrayData !== null) {
-      console.log("hi");
       setSolvedQuestion(JSON.parse(arrayData));
     }
   }, []);

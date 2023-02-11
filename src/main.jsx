@@ -7,10 +7,10 @@ import { ManageProvider } from "./components/Context/ManageContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ManageProvider>
+    <ManageProvider>
+      <BrowserRouter>
         <App />
-      </ManageProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ManageProvider>
   </React.StrictMode>
 );
