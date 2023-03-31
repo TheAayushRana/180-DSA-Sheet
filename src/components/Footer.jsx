@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ManageContext from "./Context/ManageContext";
+import ManageContext from "./context/ManageContext";
 
 function Footer() {
   const { darkMode } = useContext(ManageContext);

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import MainTable from "./MainTable";
 import Questions from "../Data/Questions.json";
-import ManageContext from "./Context/ManageContext";
+import ManageContext from "./context/ManageContext";
 
 export default function Topic() {
   const { darkMode } = useContext(ManageContext);

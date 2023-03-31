@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Topic from "./components/Topic";
 import Topics from "./components/Topics";
 import Footer from "./components/Footer";
-import ManageContext from "./components/Context/ManageContext";
+import ManageContext from "./components/context/ManageContext";
 import { useContext } from "react";
 
 function App() {

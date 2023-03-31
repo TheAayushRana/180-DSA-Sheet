@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import ManageContext from "./Context/ManageContext";
+import ManageContext from "./context/ManageContext";
 import SearchTopic from "./SearchTopic";
 
 export default function Navbar() {

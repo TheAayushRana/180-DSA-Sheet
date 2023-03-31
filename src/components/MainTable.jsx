@@ -7,7 +7,7 @@ import {
 import { useContext, useEffect, useMemo, useState } from "react";
 import SearchQuestion from "./SearchQuestion";
 import Checkbox from "./Checkbox";
-import ManageContext from "./Context/ManageContext";
+import ManageContext from "./context/ManageContext";
 
 function MainTable({ content }) {
   const { darkMode } = useContext(ManageContext);
